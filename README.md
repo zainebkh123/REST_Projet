@@ -83,7 +83,7 @@ Fonctionnalités réalisées:
 ---
 
 Structure de projet : 
-Frontend : dossier WebContent
+Frontend : dossier WebContent /
 Backend : dossier src
 
 ---
