@@ -82,8 +82,14 @@ Fonctionnalités réalisées:
 
 ---
 
- Vidéo de démonstration : 
- ajouté avec le lien Github du projet . 
+Structure de projet : 
+Frontend : dossier WebContent
+Backend : dossier src
+
+---
+
+Vidéo de démonstration : 
+ajouté avec le lien Github du projet . 
 
 
 La vidéo présente :
