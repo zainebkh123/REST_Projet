@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des Personnes - REST API</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👥</text></svg>">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="header-left">
+                    <h1>👥 Gestion des Personnes</h1>
+                    <p>Interface REST avec backend JAX-RS</p>
+                </div>
+                <div class="header-right">
+                    <span class="status-badge connected">
+                        <span class="status-dot"></span> Backend: Connecté
+                    </span>
+                    <span class="status-badge api">
+                        🔌 API: JAX-RS
+                    </span>
+                </div>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <!-- Colonne gauche : Formulaire et recherche -->
+            <div class="left-column">
+                <!-- Formulaire -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2>➕ Ajouter/Modifier une Personne</h2>
+                    </div>
+                    <div class="card-body">
+                        <form id="person-form">
+                            <input type="hidden" id="person-id">
+                            
+                            <div class="form-group">
+                                <label for="nom" class="form-label">Nom *</label>
+                                <input type="text" id="nom" class="form-control" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="age" class="form-label">Âge</label>
+                                <input type="number" id="age" class="form-control" min="0" max="150">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" id="email" class="form-control">
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary">
+                                    💾 Enregistrer
+                                </button>
+                                <button type="button" id="cancel-btn" class="btn btn-secondary">
+                                    ❌ Annuler
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+                <!-- Recherche -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2>🔍 Recherche</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label class="form-label">Recherche par ID</label>
+                            <div class="search-group">
+                                <input type="number" id="search-id" class="form-control" placeholder="ID" min="1">
+                                <button class="btn btn-search" onclick="searchById()">
+                                    🔎
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Recherche par Nom</label>
+                            <div class="search-group">
+                                <input type="text" id="search-nom" class="form-control" placeholder="Nom">
+                                <button class="btn btn-search" onclick="searchByNom()">
+                                    🔎
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Colonne droite : Liste des personnes -->
+            <div class="right-column">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="list-header">
+                            <h2>📋 Liste des Personnes</h2>
+                            <div class="list-actions">
+                                <button class="btn btn-refresh" onclick="loadAllPersons()">
+                                    🔄 Rafraîchir la liste
+                                </button>
+                                <span class="badge" id="person-count">0</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div id="message-area" class="message"></div>
+                        
+                        <div class="table-container">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Nom</th>
+                                        <th>Âge</th>
+                                        <th>Email</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="person-table-body">
+                                    <!-- Données chargées dynamiquement -->
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div id="no-data" class="empty-state">
+                            <div class="empty-icon">📭</div>
+                            <p>Aucune personne dans la base de données</p>
+                            <button class="btn btn-outline" onclick="loadAllPersons()">
+                                🔄 Rafraîchir
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <p>Projet REST - Frontend HTML5/CSS3/JavaScript avec Fetch API</p>
+                <p class="api-url">
+                    URL Backend: <code>http://localhost:8080/REST_Project/examen/projet/personnes</code>
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
